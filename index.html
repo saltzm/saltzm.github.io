@@ -97,11 +97,12 @@ a:hover {
  @media screen and (max-width: 768px) {
      body {
          padding: 15px;
-         height: 100vh;
-         overflow: hidden;
-     display: flex;
-     align-items: center;
-     justify-content: center;
+         min-height: 100vh;
+         height: -webkit-fill-available;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         overscroll-behavior-y: contain;
      }
  
      #content {
