@@ -3,7 +3,141 @@
     <head>
         <title>Matthew Saltz</title>
         <meta name="description" content="The personal site of Matthew Saltz">
-        <link rel="stylesheet" href="style.css">
+<style>
+ body {
+    background-color: #222222; 
+    font-family: 'Exo 2', sans-serif;
+    color: #CCCCCC;
+min-height: 100vh;
+margin: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 20px;
+box-sizing: border-box;
+}
+
+#content {
+    display: flex;
+    align-items: flex-start;
+    gap: 3em;
+    padding: 20px;
+max-width: 100%;
+}
+
+#name {
+    
+    color: #CCCCCC;
+    text-align: center;
+}
+#info {
+    text-align: left;
+}
+
+p {
+    display: block;
+    color: #CCCCCC;
+    margin-top: 25px;
+}
+
+h1 {
+    font-size: 7em;
+    color: #EEEEEE;
+    background-color: rgba(150, 150, 150, 0.3);
+    display: inline;
+    border: solid;
+    border-width: 10px;
+    border-color: #00FCFF;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    /*font-family: 'Molle', cursive;*/
+    /*font-family: 'Ultra', serif;*/
+}
+
+nav {
+    border-left: solid;
+    border-width: 5px;
+    border-color: #BBBBBB;
+    text-align: left;
+    padding-left: 40px;
+}
+
+nav ul {
+    list-style-type: none;
+    font-size: 1.5em;
+}
+
+a:link {
+    /*color: #A140ff;*/
+    /*color: #C999ff;*/
+    /*color: #00FCFF;*/
+    color: #CCCCCC;
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+    /*color: #C999ff;*/
+    color: #CCCCCC;
+    /*color: #A140ff;*/
+}
+
+a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+ /* Mobile Responsive Design */
+ @media screen and (max-width: 768px) {
+     body {
+         padding: 10px;
+     }
+ 
+     #content {
+         flex-direction: column;
+         align-items: center;
+         gap: 2em;
+         padding: 10px;
+     }
+ 
+     h1 {
+         font-size: 5em;
+     }
+ 
+     nav {
+         border-left: none;
+         border-top: solid 5px #BBBBBB;
+         padding-left: 0;
+         padding-top: 20px;
+         text-align: center;
+     }
+ 
+     nav ul {
+         padding-left: 0;
+     }
+ 
+     #name p {
+         text-align: center;
+     }
+ 
+     #info {
+         width: 100%;
+     }
+ }
+ 
+ /* Small phones */
+ @media screen and (max-width: 480px) {
+     h1 {
+         font-size: 4em;
+     }
+ 
+     nav ul {
+         font-size: 1.2em;
+     }
+ }
+ 
+<\style>
         <link href='http://fonts.googleapis.com/css?family=Exo+2:400,700'
         rel='stylesheet' type='text/css'>
 <!--        <link-->
