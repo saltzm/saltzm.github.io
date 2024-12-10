@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Matthew Saltz</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="The personal site of Matthew Saltz">
 <style>
  body {
@@ -95,7 +96,8 @@ a:hover {
  /* Mobile Responsive Design */
  @media screen and (max-width: 768px) {
      body {
-         padding: 10px;
+         padding: 15px;
+         min-height: 100vh;
      }
  
      #content {
@@ -103,16 +105,21 @@ a:hover {
          align-items: center;
          gap: 2em;
          padding: 10px;
+         width: 100%;
      }
  
      h1 {
          font-size: 5em;
+         margin: 0 0 20px 0;
      }
  
-      #name {
-          padding-right: 0;
-          padding-bottom: 20px;
-      }
+     #name {
+         padding-right: 0;
+         padding-bottom: 20px;
+         width: 100%;
+         display: flex;
+         justify-content: center;
+     }
  
      nav {
          border-left: none;
@@ -121,7 +128,8 @@ a:hover {
          margin-left: 0;
          padding-top: 20px;
          text-align: center;
-     width: 100%;
+         width: 100%;
+         max-width: 300px;
      }
  
      nav ul {
