@@ -145,21 +145,24 @@ body {
 }
 
 #blog-content .blog-post blockquote {
-    background-color: #2d2200 !important;
-    border-left: 3px solid #ffc107 !important;
+    background-color: var(--warning-bg) !important;
+    border-left: 3px solid var(--warning-color) !important;
     padding: 1rem 1.5rem !important;
     margin: 0 0 2rem 0 !important;
     border-radius: 0 4px 4px 0 !important;
-    color: #ffc107 !important;
+    color: var(--warning-color) !important;
     font-size: 0.95rem !important;
-    box-shadow: 0 0 0 1px #2d2200 !important;
+    box-shadow: 0 0 0 1px var(--warning-bg) !important;
+    display: block !important;
+    position: relative !important;
+    z-index: 1 !important;
 }
 
 #blog-content .blog-post blockquote p {
     margin: 0 !important;
     opacity: 1 !important;
-    color: #ffc107 !important;
-    background-color: transparent !important;
+    color: var(--warning-color) !important;
+    background: none !important;
 }
 
 .blog-post a {
@@ -263,6 +266,9 @@ body {
 @media (max-width: 768px) {
     #blog-section {
         flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        padding-bottom: 80px; /* Add space for the fixed subscribe button */
     }
 
     #blog-sidebar {
@@ -271,6 +277,7 @@ body {
         height: auto;
         padding: 1rem;
         min-height: auto;
+        box-sizing: border-box;
     }
 
     #blog-header {
@@ -310,11 +317,17 @@ body {
     #blog-content {
         margin-left: 0;
         padding: 1.5rem;
-        width: auto;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .blog-post {
         margin-bottom: 4rem;
+        width: 100%;
+        max-width: 100%;
     }
 
     .blog-post h1 {
@@ -334,14 +347,12 @@ body {
 
     .blog-post pre {
         padding: 1rem;
-        margin: 1rem -1rem;
-        border-radius: 0;
-        width: 100vw;
-        position: relative;
-        left: 50%;
-        right: 50%;
-        margin-left: -50vw;
-        margin-right: -50vw;
+        margin: 1rem 0;
+        width: 100%;
+        max-width: 100%;
+        position: static;
+        border-radius: 4px;
+        box-sizing: border-box;
         overflow-x: auto;
     }
 
@@ -358,6 +369,18 @@ body {
         background-color: rgba(26, 26, 26, 0.95);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+    }
+
+    .subscribe-button {
+        width: auto;
+        min-width: 120px;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
     }
 
     .subscribe-modal {
