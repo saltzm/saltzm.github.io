@@ -1,3 +1,8 @@
+:root {
+    --warning-bg: #2c2417;
+    --warning-color: #ffc107;
+}
+
 #blog-section {
     display: flex;
     position: relative;
@@ -394,17 +399,32 @@ body {
 }
 
 .blog-post blockquote {
-    background: #332b1c;
-    border-left: 3px solid #ffc107;
+    position: relative;
+    background: transparent;
+    border-left: 3px solid var(--warning-color);
     padding: 1rem 1.5rem;
     margin: 0 0 2rem 0;
     border-radius: 0 4px 4px 0;
-    color: #ffc107;
+    color: var(--warning-color);
     font-size: 0.95rem;
+    z-index: 1;
+}
+
+.blog-post blockquote::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--warning-bg);
+    border-radius: 0 4px 4px 0;
+    z-index: -1;
 }
 
 .blog-post blockquote p {
     margin: 0 !important;
     opacity: 1 !important;
-    color: #ffc107 !important;
+    color: var(--warning-color) !important;
+    position: relative;
 }
