@@ -392,3 +392,17 @@ body {
 .close-button:hover {
     color: rgba(255, 255, 255, 0.8);
 }
+
+.warning-callout {
+    background: rgba(255, 193, 7, 0.1);
+    border-left: 3px solid rgba(255, 193, 7, 0.5);
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 4px 4px 0;
+}
+
+.warning-callout p {
+    margin: 0 !important;
+    color: rgba(255, 193, 7, 0.9);
+    font-size: 0.95rem;
+}

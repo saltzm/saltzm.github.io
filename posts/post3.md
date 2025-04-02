@@ -1,5 +1,9 @@
 # Music and Code: A Creative Connection
 
+<div class="warning-callout">
+<p>⚠️ This is a placeholder post for demonstration purposes. The actual blog content will be coming soon.</p>
+</div>
+
 There's an interesting parallel between programming and music composition. Both involve creating something from nothing, following patterns, and sometimes breaking them.
 
 ## The Rhythm of Code
