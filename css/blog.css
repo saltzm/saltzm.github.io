@@ -270,18 +270,119 @@ body {
         width: 100%;
         height: auto;
         padding: 1rem;
+        min-height: auto;
+    }
+
+    #blog-header {
+        margin-bottom: 1rem;
+    }
+
+    #blog-header h1 {
+        font-size: 2.5rem;
+        width: 1.6em;
+        height: 1.6em;
+        border-width: 3px;
+    }
+
+    #blog-titles {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 1rem;
+        padding: 1rem 0;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    #blog-titles::-webkit-scrollbar {
+        display: none;  /* Chrome, Safari */
+    }
+
+    .blog-title {
+        padding: 0.5rem 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        font-size: 0.85rem;
     }
 
     #blog-content {
         margin-left: 0;
-        padding: 2rem;
+        padding: 1.5rem;
+        width: auto;
+    }
+
+    .blog-post {
+        margin-bottom: 4rem;
+    }
+
+    .blog-post h1 {
+        font-size: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .blog-post h2 {
+        font-size: 1.2rem;
+        margin: 1.5rem 0 1rem;
+    }
+
+    .blog-post p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    .blog-post pre {
+        padding: 1rem;
+        margin: 1rem -1rem;
+        border-radius: 0;
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        overflow-x: auto;
+    }
+
+    .blog-post pre code {
+        font-size: 0.85em;
     }
 
     .subscribe-container {
-        position: relative;
+        position: fixed;
+        bottom: 0;
+        left: 0;
         width: 100%;
         padding: 1rem;
-        border-top: none;
+        background-color: rgba(26, 26, 26, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .subscribe-modal {
+        padding: 1rem;
+    }
+
+    .subscribe-form {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+/* Additional breakpoint for very small screens */
+@media (max-width: 380px) {
+    #blog-header h1 {
+        font-size: 2rem;
+    }
+
+    .blog-post h1 {
+        font-size: 1.3rem !important;
+    }
+
+    .blog-post p {
+        font-size: 0.9rem;
     }
 }
 
