@@ -4,117 +4,19 @@ const posts = [
         id: 'post1', 
         title: 'Building a Minimalist Blog', 
         file: 'posts/post1.md',
-        content: `# Building a Minimalist Blog
-
-When I set out to create this blog, I wanted something that would be both functional and aesthetically pleasing. The key principles I followed were:
-
-1. **Simplicity**: Keep the design clean and focused on content
-2. **Performance**: Load content dynamically to maintain fast initial page load
-3. **Accessibility**: Ensure the content is readable and navigable
-
-## Technical Implementation
-
-The blog is built using vanilla JavaScript and CSS, with no heavy frameworks. Here's a snippet of the core functionality:
-
-\`\`\`javascript
-async function loadPost(file) {
-    const response = await fetch(file);
-    const markdown = await response.text();
-    return marked.parse(markdown);
-}
-\`\`\`
-
-This approach allows for:
-- Fast initial page load
-- Easy content updates
-- Clean separation of concerns
-
-## Future Enhancements
-
-I'm considering adding:
-- RSS feed support
-- Dark/light mode toggle
-- Reading time estimates
-
-Stay tuned for updates!`
+        date: 'April 2, 2024'
     },
     { 
         id: 'post2', 
         title: 'The Intersection of Technology and Research', 
         file: 'posts/post2.md',
-        content: `# The Intersection of Technology and Research
-
-As someone who works at the intersection of technology and research, I often find myself thinking about how these fields influence each other. This post explores some key observations from my experience.
-
-## Research in the Digital Age
-
-The landscape of academic research has changed dramatically with the advent of modern technology. Key developments include:
-
-- **Open Access**: Making research freely available to everyone
-- **Reproducibility**: Tools and platforms for sharing code and data
-- **Collaboration**: Global networks of researchers working together
-
-## Challenges and Opportunities
-
-While technology has opened new doors, it also presents challenges:
-
-1. **Data Management**: Handling increasingly large datasets
-2. **Version Control**: Managing multiple iterations of research
-3. **Publication**: Navigating the digital publishing landscape
-
-## Looking Forward
-
-The future of research technology holds exciting possibilities:
-- AI-assisted literature review
-- Automated experiment replication
-- Enhanced peer review systems
-
-What are your thoughts on the future of research technology?`
+        date: 'April 2, 2024'
     },
     { 
         id: 'post3', 
         title: 'Music and Code: A Creative Connection', 
         file: 'posts/post3.md',
-        content: `# Music and Code: A Creative Connection
-
-There's an interesting parallel between programming and music composition. Both involve creating something from nothing, following patterns, and sometimes breaking them.
-
-## The Rhythm of Code
-
-Just as music has rhythm and structure, so does code:
-
-\`\`\`python
-def create_melody(notes):
-    # Each note is a function call
-    # The rhythm is in the timing
-    play(note1)
-    wait(beat)
-    play(note2)
-    wait(beat)
-\`\`\`
-
-## Patterns in Both Worlds
-
-Common patterns I've noticed:
-
-1. **Repetition**: Both use loops and patterns
-2. **Harmony**: Code components working together
-3. **Improvisation**: Creative problem-solving
-
-## The Creative Process
-
-Whether I'm writing code or composing music, the process often follows similar steps:
-
-1. Start with a basic structure
-2. Iterate and refine
-3. Test and adjust
-4. Share with others
-
-## Conclusion
-
-The connection between music and programming goes deeper than we might think. Both are forms of creative expression that require both technical skill and artistic vision.
-
-*What connections do you see between your creative and technical pursuits?*`
+        date: 'April 2, 2024'
     }
 ];
 
@@ -140,31 +42,61 @@ async function initBlog() {
         blogTitles.appendChild(titleElement);
     });
 
+    // Add subscribe button
+    const subscribeContainer = document.createElement('div');
+    subscribeContainer.className = 'subscribe-container';
+    
+    const subscribeButton = document.createElement('button');
+    subscribeButton.className = 'subscribe-button';
+    subscribeButton.textContent = 'Subscribe';
+    subscribeButton.onclick = showSubscribeForm;
+    
+    subscribeContainer.appendChild(subscribeButton);
+    blogTitles.appendChild(subscribeContainer);
+
     // Load and render all posts
     const blogContent = document.getElementById('blog-content');
     for (const post of posts) {
         try {
-            const html = marked.parse(post.content);
+            const response = await fetch(post.file);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const markdown = await response.text();
+            const html = marked.parse(markdown);
+            
             const postElement = document.createElement('article');
             postElement.id = post.id;
             postElement.className = 'blog-post';
+            
+            // Create date element
+            const dateElement = document.createElement('div');
+            dateElement.className = 'post-date';
+            dateElement.textContent = post.date;
+            
+            // Add title and date before the content
             postElement.innerHTML = html;
+            const firstH1 = postElement.querySelector('h1');
+            if (firstH1) {
+                firstH1.insertAdjacentElement('afterend', dateElement);
+            }
+            
             blogContent.appendChild(postElement);
+
+            // Trigger Prism highlighting for this post
+            Prism.highlightAllUnder(postElement);
         } catch (error) {
-            console.error(`Error rendering ${post.title}:`, error);
+            console.error(`Error loading ${post.file}:`, error);
             const errorElement = document.createElement('article');
             errorElement.id = post.id;
             errorElement.className = 'blog-post';
-            errorElement.innerHTML = `<h1>${post.title}</h1><p>Error rendering post: ${error.message}</p>`;
+            errorElement.innerHTML = `<h1>${post.title}</h1><p>Error loading post: ${error.message}</p>`;
             blogContent.appendChild(errorElement);
         }
     }
 
     // Set up scroll observer for highlighting
     setupScrollObserver();
-
-    // Trigger Prism to highlight any code blocks
-    Prism.highlightAll();
 }
 
 // Scroll to a specific post
@@ -208,6 +140,54 @@ function setupScrollObserver() {
             observer.observe(element);
         }
     });
+}
+
+// Handle subscribe button click
+function showSubscribeForm() {
+    const modal = document.createElement('div');
+    modal.className = 'subscribe-modal';
+    
+    const form = document.createElement('form');
+    form.className = 'subscribe-form embeddable-buttondown-form';
+    form.action = 'https://buttondown.com/api/emails/embed-subscribe/matthew-saltz-blog';
+    form.method = 'post';
+    form.target = 'popupwindow';
+    form.onsubmit = () => window.open('https://buttondown.com/matthew-saltz-blog', 'popupwindow');
+    
+    const label = document.createElement('label');
+    label.htmlFor = 'bd-email';
+    label.textContent = 'Enter your email';
+    
+    const emailInput = document.createElement('input');
+    emailInput.type = 'email';
+    emailInput.name = 'email';
+    emailInput.id = 'bd-email';
+    emailInput.required = true;
+    
+    const submitButton = document.createElement('input');
+    submitButton.type = 'submit';
+    submitButton.value = 'Subscribe';
+    
+    const attribution = document.createElement('p');
+    const attributionLink = document.createElement('a');
+    attributionLink.href = 'https://buttondown.com/refer/matthew-saltz-blog';
+    attributionLink.target = '_blank';
+    attributionLink.textContent = 'Powered by Buttondown.';
+    attribution.appendChild(attributionLink);
+    
+    const closeButton = document.createElement('button');
+    closeButton.type = 'button';
+    closeButton.className = 'close-button';
+    closeButton.textContent = '×';
+    closeButton.onclick = () => document.body.removeChild(modal);
+    
+    form.appendChild(label);
+    form.appendChild(emailInput);
+    form.appendChild(submitButton);
+    form.appendChild(attribution);
+    modal.appendChild(closeButton);
+    modal.appendChild(form);
+    document.body.appendChild(modal);
 }
 
 // Initialize when the page loads

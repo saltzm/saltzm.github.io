@@ -15,21 +15,24 @@ body {
 
 #blog-sidebar {
     width: 250px;
-    padding: 2rem;
+    padding: 2rem 2rem 5rem 2rem;
     position: fixed;
     left: 0;
     top: 0;
     height: 100vh;
-    overflow-y: auto;
     background-color: #1a1a1a;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
 }
 
 #blog-header {
     margin-bottom: 2rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 1rem 0;
+    text-align: center;
 }
 
 #blog-header a {
@@ -64,6 +67,8 @@ body {
     flex-direction: column;
     gap: 1.5rem;
     padding-top: 1rem;
+    overflow-y: auto;
+    height: 100%;
 }
 
 .blog-title {
@@ -125,10 +130,6 @@ body {
 
 .blog-post h1::before,
 .blog-post h1::after {
-    display: none;
-}
-
-.blog-post h1 + div {
     display: none;
 }
 
@@ -216,6 +217,26 @@ body {
     color: #fff;
 }
 
+.blog-label {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 0.1em;
+}
+
+.post-date {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: -1.5rem 0 2rem 0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    display: block !important;
+}
+
 @media (max-width: 768px) {
     #blog-section {
         flex-direction: column;
@@ -232,4 +253,142 @@ body {
         margin-left: 0;
         padding: 2rem;
     }
+
+    .subscribe-container {
+        position: relative;
+        width: 100%;
+        padding: 1rem;
+        border-top: none;
+    }
+}
+
+.subscribe-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    background-color: #1a1a1a;
+    z-index: 3;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.subscribe-button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    padding: 0.5rem 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.subscribe-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.subscribe-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.subscribe-form {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 300px;
+    position: relative;
+}
+
+.subscribe-form label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    margin-bottom: -0.5rem;
+}
+
+.subscribe-form input[type="email"] {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 0.75rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    border-radius: 4px;
+}
+
+.subscribe-form input[type="email"]:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.subscribe-form input[type="submit"] {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.75rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.subscribe-form input[type="submit"]:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.subscribe-form p {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    text-align: center;
+}
+
+.subscribe-form p a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.subscribe-form p a:hover {
+    border-bottom-color: rgba(255, 255, 255, 0.4);
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover {
+    color: rgba(255, 255, 255, 0.8);
 }
