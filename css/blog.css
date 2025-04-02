@@ -1,0 +1,235 @@
+#blog-section {
+    display: flex;
+    position: relative;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+}
+
+#blog-sidebar {
+    width: 250px;
+    padding: 2rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: #1a1a1a;
+    z-index: 2;
+}
+
+#blog-header {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+#blog-header a {
+    text-decoration: none;
+}
+
+#blog-header h1 {
+    font-size: 3.5rem;
+    color: #fff;
+    background-color: rgba(150, 150, 150, 0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: solid;
+    border-width: 5px;
+    border-color: #00FCFF;
+    padding: 0;
+    width: 1.8em;
+    height: 1.8em;
+    font-family: 'Space Grotesk', serif;
+    font-weight: 300;
+    margin: 0;
+    transition: border-color 0.3s ease;
+}
+
+#blog-header h1:hover {
+    border-color: #fff;
+}
+
+#blog-titles {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 1rem;
+}
+
+.blog-title {
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+    font-size: 0.9rem;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.blog-title:hover {
+    opacity: 0.8;
+}
+
+.blog-title.active {
+    opacity: 1;
+}
+
+#blog-content {
+    margin-left: 250px;
+    padding: 2rem 4rem;
+    max-width: 800px;
+    width: 100%;
+}
+
+.blog-post {
+    margin-bottom: 6rem;
+    position: relative;
+}
+
+/* Override main styles for blog post titles */
+.blog-post h1 {
+    font-size: 1.8rem !important;
+    margin-bottom: 2rem !important;
+    font-weight: 400 !important;
+    position: relative !important;
+    display: block !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    color: #fff !important;
+}
+
+.blog-post h2 {
+    font-size: 1.4rem;
+    margin: 2rem 0 1rem;
+    font-weight: 400;
+    opacity: 0.9;
+    background: none;
+    border: none;
+    padding: 0;
+    width: auto;
+    height: auto;
+}
+
+.blog-post h1::before,
+.blog-post h1::after {
+    display: none;
+}
+
+.blog-post h1 + div {
+    display: none;
+}
+
+.blog-post p {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+.blog-post a {
+    color: #00ffff;
+    text-decoration: none;
+    border-bottom: 1px solid #00ffff;
+}
+
+.blog-post code {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9em;
+}
+
+.blog-post pre {
+    background-color: #2a2a2a;
+    padding: 1.5rem;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+.blog-post pre code {
+    background-color: transparent;
+    padding: 0;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.blog-post ul, .blog-post ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    opacity: 0.8;
+}
+
+.blog-post li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.blog-post strong {
+    color: #fff;
+    font-weight: 400;
+}
+
+.blog-post em {
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+}
+
+/* Custom PrismJS theme overrides */
+.blog-post .token.comment,
+.blog-post .token.prolog,
+.blog-post .token.doctype,
+.blog-post .token.cdata {
+    color: #666;
+}
+
+.blog-post .token.function {
+    color: #00ffff;
+}
+
+.blog-post .token.keyword {
+    color: #ff69b4;
+}
+
+.blog-post .token.string {
+    color: #98fb98;
+}
+
+.blog-post .token.number {
+    color: #ff8c00;
+}
+
+.blog-post .token.operator {
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    #blog-section {
+        flex-direction: column;
+    }
+
+    #blog-sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+    }
+
+    #blog-content {
+        margin-left: 0;
+        padding: 2rem;
+    }
+}
