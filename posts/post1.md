@@ -1,8 +1,6 @@
 # Building a Minimalist Blog
 
-<div class="warning-callout">
-<p>⚠️ This is a placeholder post for demonstration purposes. The actual blog content will be coming soon.</p>
-</div>
+> ⚠️ This is a placeholder post for demonstration purposes. The actual blog content will be coming soon.
 
 When I set out to create this blog, I wanted something that would be both functional and aesthetically pleasing. The key principles I followed were:
 

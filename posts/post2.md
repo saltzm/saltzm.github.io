@@ -1,8 +1,6 @@
 # The Intersection of Technology and Research
 
-<div class="warning-callout">
-<p>⚠️ This is a placeholder post for demonstration purposes. The actual blog content will be coming soon.</p>
-</div>
+> ⚠️ This is a placeholder post for demonstration purposes. The actual blog content will be coming soon.
 
 As someone who works at the intersection of technology and research, I often find myself thinking about how these fields influence each other. This post explores some key observations from my experience.
 
