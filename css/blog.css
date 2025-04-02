@@ -269,10 +269,8 @@ body {
         width: 100%;
         height: 100vh;
         max-width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        overflow: hidden;
+        position: relative;
+        overflow: visible;
     }
 
     #blog-sidebar {
@@ -290,15 +288,47 @@ body {
         z-index: 10;
     }
 
-    #blog-header {
-        margin-bottom: 0.5rem;
+    #blog-content {
+        margin: 0;
+        padding: 1.5rem;
+        padding-top: 140px;
+        width: 100%;
+        box-sizing: border-box;
+        position: relative;
+        overflow: visible;
     }
 
-    #blog-header h1 {
-        font-size: 2.5rem;
-        width: 1.6em;
-        height: 1.6em;
-        border-width: 3px;
+    .blog-post {
+        padding-bottom: 3rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 3rem;
+    }
+
+    .blog-post:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    .mobile-subscribe-container {
+        display: block;
+        padding: 2rem 1rem;
+        text-align: center;
+        margin: 2rem 0;
+        background-color: rgba(26, 26, 26, 0.95);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-subscribe-container .subscribe-button {
+        width: 100%;
+        max-width: 300px;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .subscribe-container {
+        display: none;
     }
 
     #blog-titles {
@@ -311,10 +341,11 @@ body {
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        margin-top: 0.5rem;
     }
 
     #blog-titles::-webkit-scrollbar {
-        display: none;  /* Chrome, Safari */
+        display: none;
     }
 
     .blog-title {
@@ -322,91 +353,23 @@ body {
         background: rgba(255, 255, 255, 0.05);
         border-radius: 20px;
         font-size: 0.85rem;
+        opacity: 0.6;
     }
 
-    #blog-content {
-        margin: 0;
-        padding: 1.5rem;
-        width: 100%;
-        height: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        position: fixed;
-        top: 160px; /* Adjust based on your header height */
-        bottom: 70px; /* Height of subscribe button + padding */
-        left: 0;
-        right: 0;
+    .blog-title.active {
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.1);
     }
 
-    .blog-post {
-        padding-bottom: 2rem;
+    #blog-header {
+        margin-bottom: 0.5rem;
     }
 
-    .blog-post h1 {
-        font-size: 1.5rem !important;
-        margin-bottom: 1.5rem !important;
-    }
-
-    .blog-post h2 {
-        font-size: 1.2rem;
-        margin: 1.5rem 0 1rem;
-    }
-
-    .blog-post p {
-        font-size: 0.95rem;
-        line-height: 1.7;
-    }
-
-    .blog-post pre {
-        padding: 1rem;
-        margin: 1rem 0;
-        width: 100%;
-        max-width: 100%;
-        position: static;
-        border-radius: 4px;
-        box-sizing: border-box;
-        overflow-x: auto;
-    }
-
-    .blog-post pre code {
-        font-size: 0.85em;
-    }
-
-    .subscribe-container {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        padding: 1rem;
-        background-color: rgba(26, 26, 26, 0.95);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 10;
-    }
-
-    .subscribe-button {
-        width: 100%;
-        max-width: 300px;
-        padding: 0.75rem 1.5rem;
-        font-size: 1rem;
-        margin: 0;
-    }
-
-    .subscribe-modal {
-        padding: 1rem;
-    }
-
-    .subscribe-form {
-        width: 100%;
-        max-width: 400px;
-        margin: 0 auto;
+    #blog-header h1 {
+        font-size: 2.5rem;
+        width: 1.6em;
+        height: 1.6em;
+        border-width: 3px;
     }
 }
 
@@ -423,20 +386,6 @@ body {
     .blog-post p {
         font-size: 0.9rem;
     }
-}
-
-.subscribe-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 250px;
-    padding: 1.5rem 2rem;
-    text-align: center;
-    background-color: rgba(26, 26, 26, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    z-index: 100;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .subscribe-button {
@@ -556,4 +505,22 @@ body {
 
 .close-button:hover {
     color: rgba(255, 255, 255, 0.8);
+}
+
+.subscribe-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    background-color: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 100;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-subscribe-container {
+    display: none;
 }

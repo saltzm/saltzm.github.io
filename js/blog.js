@@ -42,7 +42,7 @@ async function initBlog() {
         blogTitles.appendChild(titleElement);
     });
 
-    // Add subscribe button
+    // Add desktop subscribe button
     const subscribeContainer = document.createElement('div');
     subscribeContainer.className = 'subscribe-container';
     
@@ -52,13 +52,15 @@ async function initBlog() {
     subscribeButton.onclick = showSubscribeForm;
     
     subscribeContainer.appendChild(subscribeButton);
-    blogTitles.appendChild(subscribeContainer);
+    document.getElementById('blog-sidebar').appendChild(subscribeContainer);
 
     // Load and render all posts
     const blogContent = document.getElementById('blog-content');
-    for (const post of posts) {
+    blogContent.innerHTML = ''; // Clear existing content
+    
+    for (let i = 0; i < posts.length; i++) {
         try {
-            const response = await fetch(post.file);
+            const response = await fetch(posts[i].file);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -66,15 +68,15 @@ async function initBlog() {
             const html = marked.parse(markdown);
             
             const postElement = document.createElement('article');
-            postElement.id = post.id;
+            postElement.id = posts[i].id;
             postElement.className = 'blog-post';
             
             // Create date element
             const dateElement = document.createElement('div');
             dateElement.className = 'post-date';
-            dateElement.textContent = post.date;
+            dateElement.textContent = posts[i].date;
             
-            // Add title and date before the content
+            // Add content and date
             postElement.innerHTML = html;
             const firstH1 = postElement.querySelector('h1');
             if (firstH1) {
@@ -83,14 +85,24 @@ async function initBlog() {
             
             blogContent.appendChild(postElement);
 
+            // Add subscribe button after each post except the last one
+            if (i < posts.length - 1) {
+                const mobileSubscribe = document.createElement('div');
+                mobileSubscribe.className = 'mobile-subscribe-container';
+                mobileSubscribe.innerHTML = `
+                    <button class="subscribe-button" onclick="showSubscribeForm()">Subscribe to get updates</button>
+                `;
+                postElement.appendChild(mobileSubscribe);
+            }
+
             // Trigger Prism highlighting for this post
             Prism.highlightAllUnder(postElement);
         } catch (error) {
-            console.error(`Error loading ${post.file}:`, error);
+            console.error(`Error loading ${posts[i].file}:`, error);
             const errorElement = document.createElement('article');
-            errorElement.id = post.id;
+            errorElement.id = posts[i].id;
             errorElement.className = 'blog-post';
-            errorElement.innerHTML = `<h1>${post.title}</h1><p>Error loading post: ${error.message}</p>`;
+            errorElement.innerHTML = `<h1>${posts[i].title}</h1><p>Error loading post: ${error.message}</p>`;
             blogContent.appendChild(errorElement);
         }
     }
@@ -192,3 +204,70 @@ function showSubscribeForm() {
 
 // Initialize when the page loads
 document.addEventListener('DOMContentLoaded', initBlog);
+
+function createSubscribeButton() {
+    const container = document.createElement('div');
+    container.className = 'mobile-subscribe-container';
+    container.innerHTML = `
+        <button class="subscribe-button" onclick="openSubscribeModal()">Subscribe</button>
+    `;
+    return container;
+}
+
+async function renderPost(post, index, total) {
+    const postElement = document.createElement('div');
+    postElement.className = 'blog-post';
+    
+    const content = await fetchAndRenderMarkdown(post);
+    postElement.innerHTML = content;
+    
+    // Add date
+    const dateElement = document.createElement('div');
+    dateElement.className = 'post-date';
+    dateElement.textContent = formatDate(post.date);
+    postElement.insertBefore(dateElement, postElement.children[1]);
+    
+    // Add subscribe button after each post except the last one on mobile
+    if (window.innerWidth <= 768 && index < total - 1) {
+        postElement.appendChild(createSubscribeButton());
+    }
+    
+    return postElement;
+}
+
+// Update the loadPosts function to pass total count
+async function loadPosts() {
+    const posts = [
+        { file: 'posts/post3.md', date: '2024-04-02' },
+        { file: 'posts/post2.md', date: '2024-04-01' },
+        { file: 'posts/post1.md', date: '2024-03-31' }
+    ];
+
+    const blogContent = document.getElementById('blog-content');
+    blogContent.innerHTML = '';
+    
+    const blogTitles = document.getElementById('blog-titles');
+    blogTitles.innerHTML = '';
+
+    for (let i = 0; i < posts.length; i++) {
+        const post = posts[i];
+        const postElement = await renderPost(post, i, posts.length);
+        blogContent.appendChild(postElement);
+        
+        // Create title link
+        const titleLink = document.createElement('a');
+        titleLink.className = 'blog-title';
+        titleLink.textContent = postElement.querySelector('h1').textContent;
+        titleLink.href = '#' + i;
+        titleLink.onclick = (e) => {
+            e.preventDefault();
+            scrollToPost(i);
+            updateActiveTitle(i);
+        };
+        blogTitles.appendChild(titleLink);
+    }
+
+    // Set first post as active
+    updateActiveTitle(0);
+    setupScrollListener();
+}
