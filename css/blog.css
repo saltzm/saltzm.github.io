@@ -317,8 +317,22 @@ body {
         overflow-x: auto;
         gap: 1rem;
         padding: 0.5rem 0;
+        padding-right: 20px;
         white-space: nowrap;
         height: auto;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    #blog-titles::-webkit-scrollbar {
+        display: none;
+    }
+
+    #blog-titles::after {
+        content: '';
+        padding-right: 15px;
+        flex-shrink: 0;
     }
 
     .blog-title {
@@ -328,6 +342,7 @@ body {
         font-size: 0.85rem;
         opacity: 0.6;
         flex-shrink: 0;
+        transition: opacity 0.3s ease, background-color 0.3s ease;
     }
 
     .blog-title.active {

@@ -101,11 +101,54 @@ async function initBlog() {
     setupScrollObserver();
 }
 
-// Scroll to a specific post
+// Scroll to a specific post and center its title
 function scrollToPost(postId) {
+    // First scroll to the post
     const element = document.getElementById(postId);
     if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
+        
+        // Center the title in the titles bar (after a slight delay to ensure scrolling has completed)
+        setTimeout(() => {
+            centerActiveTitle(postId);
+        }, 500);
+    }
+}
+
+// Center the active title in the title bar
+function centerActiveTitle(postId) {
+    if (window.innerWidth <= 768) { // Only on mobile
+        const titlesContainer = document.getElementById('blog-titles');
+        const postIndex = posts.findIndex(post => post.id === postId);
+        
+        if (postIndex !== -1 && titlesContainer) {
+            const titleElements = document.querySelectorAll('.blog-title');
+            const activeTitle = titleElements[postIndex];
+            
+            if (activeTitle) {
+                // Calculate the scroll position to center the title
+                const containerWidth = titlesContainer.offsetWidth;
+                const titleOffsetLeft = activeTitle.offsetLeft;
+                const titleWidth = activeTitle.offsetWidth;
+                
+                // Center the title in the container with a slight left offset to ensure full visibility
+                // This helps prevent the right side from being cut off
+                const scrollPosition = titleOffsetLeft - (containerWidth / 2) + (titleWidth / 2) - 10;
+                
+                // Ensure we don't scroll too far right (past the end)
+                const maxScroll = titlesContainer.scrollWidth - containerWidth;
+                const finalPosition = Math.min(scrollPosition, maxScroll);
+                
+                // Ensure we don't scroll too far left (before the beginning)
+                const safePosition = Math.max(0, finalPosition);
+                
+                // Smooth scroll the titles container
+                titlesContainer.scrollTo({
+                    left: safePosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
     }
 }
 
@@ -130,6 +173,9 @@ function setupScrollObserver() {
                 const postIndex = posts.findIndex(post => post.id === postId);
                 if (postIndex !== -1) {
                     document.querySelectorAll('.blog-title')[postIndex].classList.add('active');
+                    
+                    // Center the active title
+                    centerActiveTitle(postId);
                 }
             }
         });
