@@ -56,7 +56,7 @@ async function initBlog() {
 
     // Load and render all posts
     const blogContent = document.getElementById('blog-content');
-    blogContent.innerHTML = ''; // Clear existing content
+    blogContent.innerHTML = '';
     
     for (let i = 0; i < posts.length; i++) {
         try {
@@ -84,16 +84,6 @@ async function initBlog() {
             }
             
             blogContent.appendChild(postElement);
-
-            // Add subscribe button after each post except the last one
-            if (i < posts.length - 1) {
-                const mobileSubscribe = document.createElement('div');
-                mobileSubscribe.className = 'mobile-subscribe-container';
-                mobileSubscribe.innerHTML = `
-                    <button class="subscribe-button" onclick="showSubscribeForm()">Subscribe to get updates</button>
-                `;
-                postElement.appendChild(mobileSubscribe);
-            }
 
             // Trigger Prism highlighting for this post
             Prism.highlightAllUnder(postElement);
@@ -204,70 +194,3 @@ function showSubscribeForm() {
 
 // Initialize when the page loads
 document.addEventListener('DOMContentLoaded', initBlog);
-
-function createSubscribeButton() {
-    const container = document.createElement('div');
-    container.className = 'mobile-subscribe-container';
-    container.innerHTML = `
-        <button class="subscribe-button" onclick="openSubscribeModal()">Subscribe</button>
-    `;
-    return container;
-}
-
-async function renderPost(post, index, total) {
-    const postElement = document.createElement('div');
-    postElement.className = 'blog-post';
-    
-    const content = await fetchAndRenderMarkdown(post);
-    postElement.innerHTML = content;
-    
-    // Add date
-    const dateElement = document.createElement('div');
-    dateElement.className = 'post-date';
-    dateElement.textContent = formatDate(post.date);
-    postElement.insertBefore(dateElement, postElement.children[1]);
-    
-    // Add subscribe button after each post except the last one on mobile
-    if (window.innerWidth <= 768 && index < total - 1) {
-        postElement.appendChild(createSubscribeButton());
-    }
-    
-    return postElement;
-}
-
-// Update the loadPosts function to pass total count
-async function loadPosts() {
-    const posts = [
-        { file: 'posts/post3.md', date: '2024-04-02' },
-        { file: 'posts/post2.md', date: '2024-04-01' },
-        { file: 'posts/post1.md', date: '2024-03-31' }
-    ];
-
-    const blogContent = document.getElementById('blog-content');
-    blogContent.innerHTML = '';
-    
-    const blogTitles = document.getElementById('blog-titles');
-    blogTitles.innerHTML = '';
-
-    for (let i = 0; i < posts.length; i++) {
-        const post = posts[i];
-        const postElement = await renderPost(post, i, posts.length);
-        blogContent.appendChild(postElement);
-        
-        // Create title link
-        const titleLink = document.createElement('a');
-        titleLink.className = 'blog-title';
-        titleLink.textContent = postElement.querySelector('h1').textContent;
-        titleLink.href = '#' + i;
-        titleLink.onclick = (e) => {
-            e.preventDefault();
-            scrollToPost(i);
-            updateActiveTitle(i);
-        };
-        blogTitles.appendChild(titleLink);
-    }
-
-    // Set first post as active
-    updateActiveTitle(0);
-    setupScrollListener();
-}
