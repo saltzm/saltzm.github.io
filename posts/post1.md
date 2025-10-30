@@ -2,7 +2,7 @@
 
 I've quit a lot of things in my life - drinking caffeine (three months ago), drinking alcohol (slowly over years, still have sips now and then), eating most added sugar (was prediabetic, now I'm not, still have small amounts at times).
 
-All of the things I quit, I actually love - I love artisanal coffee; I love the taste of a good cocktail and good beer; for most of my life I said I had a second stomach for dessert.
+All of the things I quit, I actually love - I love artisanal coffee; I love the taste of a good cocktail and good beer; and for most of my life I said I had a second stomach for dessert.
 
 And yet now it feels pretty much normal that I don't consume these things.
 

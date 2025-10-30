@@ -2,21 +2,9 @@
 const posts = [
     { 
         id: 'post1', 
-        title: 'Building a Minimalist Blog', 
+        title: 'On Managing Cravings', 
         file: 'posts/post1.md',
-        date: 'April 2, 2024'
-    },
-    { 
-        id: 'post2', 
-        title: 'The Intersection of Technology and Research', 
-        file: 'posts/post2.md',
-        date: 'April 2, 2024'
-    },
-    { 
-        id: 'post3', 
-        title: 'Music and Code: A Creative Connection', 
-        file: 'posts/post3.md',
-        date: 'April 2, 2024'
+        date: 'October 29, 2025'
     }
 ];
 
