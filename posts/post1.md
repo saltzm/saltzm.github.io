@@ -1,4 +1,4 @@
-# On Managing Cravings
+# On managing cravings
 
 I've quit a lot of things in my life - drinking caffeine (three months ago), drinking alcohol (slowly over years, still have sips now and then), eating most added sugar (was prediabetic, now I'm not, still have small amounts at times).
 
