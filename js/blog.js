@@ -5,6 +5,12 @@ const posts = [
         title: 'On Managing Cravings', 
         file: 'posts/post1.md',
         date: 'October 29, 2025'
+    },
+    {
+        id: 'post3',
+        title: "You don't have to answer the question",
+        file: 'posts/post3.md',
+        date: 'December 21, 2025'
     }
 ];
 
