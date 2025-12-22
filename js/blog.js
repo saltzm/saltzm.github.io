@@ -192,50 +192,50 @@ function setupScrollObserver() {
 
 // Handle subscribe button click
 function showSubscribeForm() {
-    const modal = document.createElement('div');
-    modal.className = 'subscribe-modal';
-    
-    const form = document.createElement('form');
-    form.className = 'subscribe-form embeddable-buttondown-form';
-    form.action = 'https://buttondown.com/api/emails/embed-subscribe/matthew-saltz-blog';
-    form.method = 'post';
-    form.target = 'popupwindow';
-    form.onsubmit = () => window.open('https://buttondown.com/matthew-saltz-blog', 'popupwindow');
-    
-    const label = document.createElement('label');
-    label.htmlFor = 'bd-email';
-    label.textContent = 'Enter your email';
-    
-    const emailInput = document.createElement('input');
-    emailInput.type = 'email';
-    emailInput.name = 'email';
-    emailInput.id = 'bd-email';
-    emailInput.required = true;
-    
-    const submitButton = document.createElement('input');
-    submitButton.type = 'submit';
-    submitButton.value = 'Subscribe';
-    
-    const attribution = document.createElement('p');
-    const attributionLink = document.createElement('a');
-    attributionLink.href = 'https://buttondown.com/refer/matthew-saltz-blog';
-    attributionLink.target = '_blank';
-    attributionLink.textContent = 'Powered by Buttondown.';
-    attribution.appendChild(attributionLink);
-    
-    const closeButton = document.createElement('button');
-    closeButton.type = 'button';
-    closeButton.className = 'close-button';
-    closeButton.textContent = '×';
-    closeButton.onclick = () => document.body.removeChild(modal);
-    
-    form.appendChild(label);
-    form.appendChild(emailInput);
-    form.appendChild(submitButton);
-    form.appendChild(attribution);
-    modal.appendChild(closeButton);
-    modal.appendChild(form);
-    document.body.appendChild(modal);
+    //const modal = document.createElement('div');
+    //modal.className = 'subscribe-modal';
+    //
+    //const form = document.createElement('form');
+    //form.className = 'subscribe-form embeddable-buttondown-form';
+    //form.action = 'https://buttondown.com/api/emails/embed-subscribe/matthew-saltz-blog';
+    //form.method = 'post';
+    //form.target = 'popupwindow';
+    //form.onsubmit = () => window.open('https://buttondown.com/matthew-saltz-blog', 'popupwindow');
+    //
+    //const label = document.createElement('label');
+    //label.htmlFor = 'bd-email';
+    //label.textContent = 'Enter your email';
+    //
+    //const emailInput = document.createElement('input');
+    //emailInput.type = 'email';
+    //emailInput.name = 'email';
+    //emailInput.id = 'bd-email';
+    //emailInput.required = true;
+    //
+    //const submitButton = document.createElement('input');
+    //submitButton.type = 'submit';
+    //submitButton.value = 'Subscribe';
+    //
+    //const attribution = document.createElement('p');
+    //const attributionLink = document.createElement('a');
+    //attributionLink.href = 'https://buttondown.com/refer/matthew-saltz-blog';
+    //attributionLink.target = '_blank';
+    //attributionLink.textContent = 'Powered by Buttondown.';
+    //attribution.appendChild(attributionLink);
+    //
+    //const closeButton = document.createElement('button');
+    //closeButton.type = 'button';
+    //closeButton.className = 'close-button';
+    //closeButton.textContent = '×';
+    //closeButton.onclick = () => document.body.removeChild(modal);
+    //
+    //form.appendChild(label);
+    //form.appendChild(emailInput);
+    //form.appendChild(submitButton);
+    //form.appendChild(attribution);
+    //modal.appendChild(closeButton);
+    //modal.appendChild(form);
+    //document.body.appendChild(modal);
 }
 
 // Initialize when the page loads
