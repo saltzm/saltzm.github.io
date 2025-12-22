@@ -1,16 +1,22 @@
 // List of blog posts in order
 const posts = [
-    { 
-        id: 'post1', 
-        title: 'On Managing Cravings', 
-        file: 'posts/post1.md',
-        date: 'October 29, 2025'
-    },
     {
         id: 'post3',
         title: "You don't have to answer the question",
         file: 'posts/post3.md',
         date: 'December 21, 2025'
+    },
+    { 
+        id: 'post2', 
+        title: 'Coding without LLMs', 
+        file: 'posts/post2.md',
+        date: 'November 20, 2025'
+    },
+    { 
+        id: 'post1', 
+        title: 'On managing cravings', 
+        file: 'posts/post1.md',
+        date: 'October 29, 2025'
     }
 ];
 
