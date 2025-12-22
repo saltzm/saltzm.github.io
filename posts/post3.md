@@ -3,4 +3,4 @@
 
 It never occurred to me until last year that some questions don't need answers. 
 
-Sometimes now when I wonder something like "What if I die tomorrow?" or "What if I get cancer?" or "What's my purpose?" I'll think, "Wow, that's a really great question" and just move on with my day.
+Sometimes now when I wonder something like "What if I die tomorrow?" or "What's my purpose?" I'll think, "Wow, that's a really great question" and just move on with my day.
