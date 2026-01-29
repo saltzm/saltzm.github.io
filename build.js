@@ -58,10 +58,6 @@ function readPosts() {
 }
 
 function postTemplate(post, allPosts) {
-    const currentIndex = allPosts.findIndex(p => p.slug === post.slug);
-    const prevPost = allPosts[currentIndex + 1];
-    const nextPost = allPosts[currentIndex - 1];
-
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,10 +89,6 @@ ${allPosts.map(p => `                <a href="../${p.slug}/" class="blog-title${
             <article class="blog-post">
                 ${post.html}
             </article>
-            <nav class="post-nav">
-                ${prevPost ? `<a href="../${prevPost.slug}/" class="prev-post">&larr; ${prevPost.title}</a>` : '<span></span>'}
-                ${nextPost ? `<a href="../${nextPost.slug}/" class="next-post">${nextPost.title} &rarr;</a>` : '<span></span>'}
-            </nav>
         </div>
     </div>
     <script>Prism.highlightAll();</script>
