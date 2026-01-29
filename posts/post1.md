@@ -1,3 +1,8 @@
+---
+title: On managing cravings
+date: October 29, 2025
+---
+
 # On managing cravings
 
 I've quit a lot of things in my life - drinking caffeine (three months ago), drinking alcohol (slowly over years, still have sips now and then), eating most added sugar (was prediabetic, now I'm not, still have small amounts at times).
@@ -10,7 +15,7 @@ Over the years I feel like I've learned a lot about managing cravings without go
 
 ## There's no need to shut down the craving
 
-My natural impulse when I'm trying to restrict something, e.g. eating added sugar, is when the craving for that thing arises, to really shove it down and try to ignore it. Over the years I've found this just makes me feel bad. Now, I just let myself feel the craving fully, and still just decide not to engage in it. 
+My natural impulse when I'm trying to restrict something, e.g. eating added sugar, is when the craving for that thing arises, to really shove it down and try to ignore it. Over the years I've found this just makes me feel bad. Now, I just let myself feel the craving fully, and still just decide not to engage in it.
 
 ## There's no such thing as falling off the wagon
 
@@ -27,4 +32,3 @@ I decided to dial back my alcohol consumption years ago after a friend stayed wi
 ---
 
 So... am I happy? Honestly, I wish I could drink as much cold brew as I wanted, have cocktails whenever I wanted, and eat as much dessert as I wanted. That would be pretty damned pleasurable. And maybe someday I'll relax a bit more and won't mind some of the negative side effects of cold brew or cocktails. But for now it pretty much just feels normal, and even though it may sound like I'm a Puritan, I don't feel internally like I'm being incredibly restrictive or harsh with myself. These changes happened slowly over time and since I allow myself to feel whatever I'm feeling instead of fighting or negotiating with the craving, I don't feel repressed because of it. And I no longer have prediabetes, which is cool. And I still sometimes get to eat McFlurry's. 😇
-

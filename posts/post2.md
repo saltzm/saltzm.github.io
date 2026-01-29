@@ -1,3 +1,7 @@
+---
+title: Coding without LLMs
+date: November 20, 2025
+---
 
 # Coding without LLMs
 
@@ -9,11 +13,11 @@ I started typing, not knowing whether what I was typing would compile or not. An
 
 For context, after being a lifelong vim user, refusing even basic autocomplete for much of the time because I found it distracting, I've been using Cursor + LLMs to write at least 80% of my code professionally for the past few months. It has without a doubt made me more productive - especially working in new domains, in languages I'm less familiar with.
 
-But opening up vim for the first time, with nothing but me and the editor, I just felt good. I felt content. I typed out some stuff - it didn't compile. I actually had to go search docs by hand to see what I was doing wrong. And what's more - I had to actually focus and engage with what I was typing. 
+But opening up vim for the first time, with nothing but me and the editor, I just felt good. I felt content. I typed out some stuff - it didn't compile. I actually had to go search docs by hand to see what I was doing wrong. And what's more - I had to actually focus and engage with what I was typing.
 
-I realized that so much of the time using LLMs I barely have to think or focus - the next step is often obvious and if it isn't it's easier to get the LLM to figure out what needs to be done and verify it than to do it myself. 
+I realized that so much of the time using LLMs I barely have to think or focus - the next step is often obvious and if it isn't it's easier to get the LLM to figure out what needs to be done and verify it than to do it myself.
 
-When I started learning to code, I felt this beautiful feeling of creating something from nothing. I've always enjoyed being creative - creative writing, writing songs and playing music - and my dad never understood how I ended up being a computer science major. I would explain that coding was like building an entire machine just by typing. Writing code felt not that different from writing a poem. 
+When I started learning to code, I felt this beautiful feeling of creating something from nothing. I've always enjoyed being creative - creative writing, writing songs and playing music - and my dad never understood how I ended up being a computer science major. I would explain that coding was like building an entire machine just by typing. Writing code felt not that different from writing a poem.
 
 I didn't noticing it happening, but with LLMs, that feeling is gone. Sure, it's amazing to see sometimes what you can build quickly with an LLM, and I do feel a kind of awe at that happening. But it's like commissioning someone else to write a poem for me - where's the joy in that? The entire fun of writing a poem comes in the process. Express yourself; rephrase; get stuck; wait for the solution to come.
 

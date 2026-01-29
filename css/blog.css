@@ -252,6 +252,39 @@ body {
     color: rgba(255, 255, 255, 0.6);
     font-family: 'Space Grotesk', sans-serif;
     letter-spacing: 0.1em;
+    text-decoration: none;
+}
+
+a.blog-label:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.post-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
+}
+
+.post-nav a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+    max-width: 45%;
+}
+
+.post-nav a:hover {
+    color: #00ffff;
+}
+
+.post-nav .prev-post {
+    text-align: left;
+}
+
+.post-nav .next-post {
+    text-align: right;
 }
 
 .post-date {
