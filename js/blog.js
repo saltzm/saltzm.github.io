@@ -1,3 +1,13 @@
+// Convert title to URL-friendly slug
+function slugify(title) {
+    return title
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .trim();
+}
+
 // List of blog posts in order
 const posts = [
     {
@@ -99,6 +109,35 @@ async function initBlog() {
 
     // Set up scroll observer for highlighting
     setupScrollObserver();
+
+    // Handle initial hash navigation (use instant scroll on page load)
+    handleHashNavigation(false);
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', () => handleHashNavigation(true));
+}
+
+// Find post by slug or id
+function findPostByHash(hash) {
+    const normalizedHash = hash.replace('#', '');
+    return posts.find(post =>
+        post.id === normalizedHash || slugify(post.title) === normalizedHash
+    );
+}
+
+// Handle hash navigation on page load or hash change
+function handleHashNavigation(smooth = true) {
+    const hash = window.location.hash;
+    if (hash) {
+        const post = findPostByHash(hash);
+        if (post) {
+            const element = document.getElementById(post.id);
+            if (element) {
+                element.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto' });
+                centerActiveTitle(post.id);
+            }
+        }
+    }
 }
 
 // Scroll to a specific post and center its title
@@ -107,7 +146,13 @@ function scrollToPost(postId) {
     const element = document.getElementById(postId);
     if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
-        
+
+        // Update URL hash with slug
+        const post = posts.find(p => p.id === postId);
+        if (post) {
+            history.replaceState(null, '', '#' + slugify(post.title));
+        }
+
         // Center the title in the titles bar (after a slight delay to ensure scrolling has completed)
         setTimeout(() => {
             centerActiveTitle(postId);
