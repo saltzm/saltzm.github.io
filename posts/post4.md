@@ -3,6 +3,8 @@ title: On drawing the wrong conclusions (or, healing emotional scars)
 date: January 29, 2026
 ---
 
+# On drawing the wrong conclusions (or, healing emotional scars)
+
 I've found that as I've gotten older, I've generally had fewer feelings. Overall, I just don't feel as emotional. Part of this is natural, but part of this I've found is due to what I might refer to as "drawing the wrong conclusions" or "emotional scar tissue". 
 
 I've realized that, when faced with discomfort or uncertainty, I have the tendency to want to draw some conclusion from my situation that will help me prevent this discomfort in the future or try to resolve the uncertainty. 
